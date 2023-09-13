@@ -1,28 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS ToDo List</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JS ToDo List</title>
 
-    <!-- BS5 CSS LINK -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <!-- FA LINK -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- CUSTOM CSS LINK -->
-    <link rel="stylesheet" href="./assets/css/style.css">
-    
-</head>
-<body>
-    
-    <div id="app">
-        
-        {{ message }}
-    
-    </div>
+        <!-- BS5 CSS LINK -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+            crossorigin="anonymous">
+        <!-- FA LINK -->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- CUSTOM CSS LINK -->
+        <link rel="stylesheet" href="./assets/css/style.css">
 
+    </head>
+    <body>
 
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="./assets/js/main.js"></script>
-</body>
+        <div id="app">
+
+            <div class="logo justify-content-center d-flex mb-4">
+                <img :src="pageLogo" alt>
+                <h1>ToBooList 2.0</h1>
+            </div>
+
+            <div class="container text-center">
+                <div class="new_task">
+                    <input v-model="newTask" type="text">
+                    <button class="btn btn-success">Add task</button>
+                </div>
+
+                <ul class="container w-25 mt-5">
+                    <li v-for="(task, index) in toDoList" @click="taskDone(index)" class="d-flex justify-content-between border-bottom p-3" :class="task.done == false ? 'text-decoration-line-through' : '' " >
+                        {{task.text}}
+                        <i class="btn btn-light border fa-regular fa-trash-can" @click="removeTask(index)" ></i>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="./assets/js/main.js"></script>
+    </body>
 </html>
