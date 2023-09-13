@@ -31,17 +31,27 @@
 
             <div class="container text-center">
                 <div class="new_task">
-                    <input v-model="newTask" type="text">
-                    <button class="btn btn-success">Add task</button>
+                    <input v-model="newTask" type="text" @keyup.enter="addTask()">
+                    <button @click="addTask()"  class="btn btn-success">Add task</button>
+                    <p v-if="error == true" class="mt-4 text-danger">You cannot insert an empty task!</p>
                 </div>
 
-                <ul class="container w-25 mt-5">
-                    <li v-for="(task, index) in toDoList" @click="taskDone(index)" class="d-flex justify-content-between border-bottom p-3" :class="task.done == false ? 'text-decoration-line-through' : '' " >
-                        {{task.text}}
-                        <i class="btn btn-light border fa-regular fa-trash-can" @click="removeTask(index)" ></i>
+                <ul v-if="toDoList.length > 0" class="container w-25 mt-5">
+                    <li v-for="(task, index) in toDoList"
+                        class="d-flex justify-content-between border-bottom p-3">
+                        <div @click="taskDone(index)"
+                            :class="task.done ? 'text-decoration-line-through' : '' ">
+
+                            {{task.text}}
+                            
+                        </div>
+
+                        <i class="btn btn-light border fa-regular fa-trash-can"
+                            @click="removeTask(index)"></i>
                     </li>
 
                 </ul>
+                <h2 v-else class="mt-4">No tasks to do. Relax!</h2>
             </div>
 
         </div>

@@ -19,55 +19,73 @@ Bonus: 1- oltre al click sul pulsante, intercettare anche il tasto ENTER per agg
 
 const { createApp } = Vue
 
-  createApp({
-    data() {
-      return {
+createApp({
+  data() {
+    return {
 
-        pageLogo: './assets/img/Logo.png',
-        newTask: '',
+      pageLogo: './assets/img/Logo.png',
+      newTask: '',
+      error: false,
 
 
-        toDoList:[
+      toDoList: [
         {
           text: 'Fare la spesa',
-          done: true
-        },
-        {
-          text: 'Fare la spesa' ,
           done: false
         },
         {
-          text: 'Fare la spesa' ,
+          text: 'Fare la spesa',
           done: false
         },
         {
-          text: 'Fare la spesa' ,
+          text: 'Fare la spesa',
           done: false
         },
         {
-          text: 'Fare la spesa' ,
+          text: 'Fare la spesa',
+          done: false
+        },
+        {
+          text: 'Fare la spesa',
           done: false
         }
-      ] 
-       
-      }
-    },
-    methods: {
+      ]
 
-      taskDone(index){
-        if (this.toDoList[index].done) {
-
-          this.toDoList[index].done = true
-
-        } else {
-
-          this.toDoList[index].done = false
-
-        }
-        
-      },
-      removeTask(index){
-        this.toDoList.splice(index, 1)
-      }
     }
-  }).mount('#app')
+  },
+  methods: {
+
+    taskDone(index) {
+      if (this.toDoList[index].done) {
+
+        this.toDoList[index].done = false
+
+      } else {
+
+        this.toDoList[index].done = true
+
+      }
+
+    },
+
+    removeTask(index) {
+      this.toDoList.splice(index, 1)
+    },
+
+    addTask() {
+
+      if (this.newTask != '') {
+        this.toDoList.unshift({
+          text: this.newTask,
+          done: false
+        })
+        this.error = false
+      } else {
+        this.error = true
+      }
+
+      this.newTask = ''
+
+    }
+  }
+}).mount('#app')
