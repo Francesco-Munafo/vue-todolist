@@ -30,23 +30,23 @@ createApp({
 
       toDoList: [
         {
-          text: 'Fare la spesa',
+          text: 'Buy some groceries',
           done: false
         },
         {
-          text: 'Fare la spesa',
+          text: 'Clean the car',
           done: false
         },
         {
-          text: 'Fare la spesa',
+          text: 'Go out with the dog',
           done: false
         },
         {
-          text: 'Fare la spesa',
+          text: 'Clean the house',
           done: false
         },
         {
-          text: 'Fare la spesa',
+          text: 'Study some more JS',
           done: false
         }
       ]
