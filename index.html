@@ -51,7 +51,11 @@
                     </li>
 
                 </ul>
-                <h2 v-else class="mt-4">No tasks to do. You can play Skyrim now!</h2>
+                <div v-else class="mt-4">
+                    <h2>No tasks to do. You can play Skyrim!</h2>
+                    <img :src="noTaskGif" alt="" >
+                </div>
+                
             </div>
 
         </div>

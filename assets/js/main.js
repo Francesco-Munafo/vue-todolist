@@ -22,7 +22,7 @@ const { createApp } = Vue
 createApp({
   data() {
     return {
-
+      noTaskGif: './assets/img/skyrim-margin.gif',
       pageLogo: './assets/img/Logo.png',
       newTask: '',
       error: false,
